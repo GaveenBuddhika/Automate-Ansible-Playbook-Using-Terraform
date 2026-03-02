@@ -1,0 +1,12 @@
+- name: Control EC2 Power State
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Set EC2 instance state
+      amazon.aws.ec2_instance:
+        profile: "mit_test"
+        instance_ids: 
+          - "{{ target_instance_id }}"
+        region: "us-east-1"
+        state: "{{ target_state }}"
